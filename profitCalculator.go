@@ -7,14 +7,11 @@ import (
 const taxRate float64 = 19
 
 func main() {
-	var quantitySold, unitPrice, grr, corporateTax, netRevenue float64
+	var grr, corporateTax, netRevenue float64
 
 	// get values for quantity and price
-	textRequest("Enter the number of items sold: ")
-	fmt.Scan(&quantitySold)
-
-	textRequest("Enter the unit price/item: ")
-	fmt.Scan(&unitPrice)
+	quantitySold := textRequest("Enter the number of items sold: ")
+	unitPrice := textRequest("Enter the unit price/item: ")
 
 	// calculate gross revenue, corportate tax, net revenue and profit ratio
 	// if a function returns multiple values, like this one, you can store it in those variables
@@ -40,6 +37,9 @@ func revNums(quantitySold, unitPrice float64) (float64, float64, float64, float6
 	return grr, corporateTax, netRevenue, ratio
 }
 
-func textRequest(text string) {
+func textRequest(text string) float64 {
+	var userValue float64
 	fmt.Println(text)
+	fmt.Scan(&userValue)
+	return userValue
 }
